@@ -8,11 +8,14 @@ interface Props {
 }
 
 const carriers = [
-  { id: 'DHL', name: 'DHL' },
-  { id: 'FEDEX', name: 'FedEx Express' },
-  { id: 'DACHSER', name: 'Dachser' },
-  { id: 'GW', name: 'Gebrüder Weiss' },
-  { id: 'KWE', name: 'KINTETSU WORLD EXPRESS' },
+  { id: 'CON', name: 'Constellium' },
+  { id: 'DUP', name: 'DuPont' },
+  { id: 'FES', name: 'Festo' },
+  { id: 'MAX', name: 'maxon' },
+  { id: 'TRE', name: 'Trelleborg' },
+  { id: 'SMC', name: 'SMC Corp' },
+  { id: 'FRE', name: 'Freudenberg' },
+  { id: 'NOV', name: 'Novelis' },
 ];
 
 export default function ScorecardView({ onNavigate }: Props) {
@@ -21,16 +24,16 @@ export default function ScorecardView({ onNavigate }: Props) {
   const renderCarrierMetric = (carrierId: string) => {
     switch (activeMetric?.id) {
       case 'otif':
-        const otifScores: Record<string, string> = { 'DHL': '98.5%', 'FEDEX': '92.1%', 'DACHSER': '96.2%', 'GW': '88.4%', 'KWE': '99.5%' };
+        const otifScores: Record<string, string> = { 'CON': '98.5%', 'DUP': '92.1%', 'FES': '96.2%', 'MAX': '88.4%', 'TRE': '99.5%', 'SMC': '95.0%', 'FRE': '91.2%', 'NOV': '89.5%' };
         return <span className="font-extrabold text-[var(--color-primary)]">{otifScores[carrierId] || '95.0%'}</span>;
       case 'poAck':
-        const ackScores: Record<string, string> = { 'DHL': '1.2h', 'FEDEX': '3.4h', 'DACHSER': '2.8h', 'GW': '6.5h', 'KWE': '0.5h' };
+        const ackScores: Record<string, string> = { 'CON': '1.2h', 'DUP': '3.4h', 'FES': '2.8h', 'MAX': '6.5h', 'TRE': '0.5h', 'SMC': '2.1h', 'FRE': '4.2h', 'NOV': '3.0h' };
         return <span className="font-extrabold text-[var(--color-primary)]">{ackScores[carrierId] || '2.0h'}</span>;
       case 'readiness':
-        const leadScores: Record<string, string> = { 'DHL': '5.2d', 'FEDEX': '6.1d', 'DACHSER': '7.2d', 'GW': '8.5d', 'KWE': '4.1d' };
+        const leadScores: Record<string, string> = { 'CON': '5.2d', 'DUP': '6.1d', 'FES': '7.2d', 'MAX': '8.5d', 'TRE': '4.1d', 'SMC': '6.0d', 'FRE': '5.5d', 'NOV': '7.0d' };
         return <span className="font-extrabold text-[var(--color-primary)]">{leadScores[carrierId] || '6.0d'}</span>;
       case 'docQual':
-        const docScores: Record<string, string> = { 'DHL': '99.8%', 'FEDEX': '97.5%', 'DACHSER': '99.1%', 'GW': '92.0%', 'KWE': '100%' };
+        const docScores: Record<string, string> = { 'CON': '99.8%', 'DUP': '97.5%', 'FES': '99.1%', 'MAX': '92.0%', 'TRE': '100%', 'SMC': '98.0%', 'FRE': '96.5%', 'NOV': '94.0%' };
         return <span className="font-extrabold text-[var(--color-primary)]">{docScores[carrierId] || '98.0%'}</span>;
       default:
         return '-';
